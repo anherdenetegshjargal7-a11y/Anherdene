@@ -1,0 +1,6 @@
+{
+  "name": "Portfolio Website",
+  "description": "A high-end, responsive developer portfolio featuring K-pop & tech 'Idol Coach' mentoring and an interactive 'Me-AI' personal assistant chat clone powered by the Gemini 3.5 Flash API.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
