@@ -182,6 +182,47 @@ app.post("/api/chat/me", async (req, res) => {
   }
 });
 
+// 🔮 Anime Quiz - Gemini Clue Generator API
+app.post("/api/quiz/ai-clue", async (req, res) => {
+  try {
+    const { title, genre, difficulty } = req.body;
+    if (!title) {
+      return res.status(400).json({ error: "Anime title is required" });
+    }
+
+    const ai = getGeminiClient();
+
+    const systemInstruction = `Та бол анимэ ертөнцийг нэвт тольдогч "Анимэ Сэнсэй" (Anime Sensei) хэмээх ухаалаг, бага зэрэг нууцлаг, хөгжилтэй туслах дүр юм.
+Тоглогч анимэ таах тоглоом тоглож байгаа бөгөөд "${title}" анимэг тааж чадахгүй гацчихаад байна.
+Таны зорилго бол хэрэглэгчид тусалж, тухайн анимэгийн нэрийг ШУУД ХЭЛЭЛГҮЙГЭЭР маш сонирхолтой, нууцлаг, ухаалаг оньсого/ишлэл маягийн зөвлөмж өгөх явдал юм.
+
+Хариулт өгөх заавар:
+1. Хэзээ ч хариулт болох "${title}" гэдэг үгийг эх хэлээр нь болон англиар шууд хэлж болохгүй! Хэрэв анимэ доторх гол дүрүүдийн нэрийг ашиглаж болохоор байвал маш далд, сонирхолтой байдлаар дурд.
+2. Монгол хэлээр маш найрсаг, залуусын хэллэгээр, анимэ сонирхогчийн хувиар хариул. Уншихад хялбар 2-3 өгүүлбэр, 1-2 эможи ашигла.
+3. Түүх, зэвсэг, гол зөрчилдөөн эсвэл хамгийн алдартай ишлэлийг нь ашиглан сонирхолтой зөвлөгөө өг.
+Мэдээлэл: Жанр: ${genre || "Тодорхойгүй"}, Хүндрэл: ${difficulty || "Medium"}.`;
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-flash",
+      contents: [
+        {
+          role: "user",
+          parts: [{ text: `Сэнсэй, надад энэ анимэг таахад туслах нууцлаг зөвлөгөө өгөөч!` }],
+        }
+      ],
+      config: {
+        systemInstruction,
+        temperature: 0.85,
+      },
+    });
+
+    res.json({ clue: response.text });
+  } catch (error: any) {
+    console.error("Error in /api/quiz/ai-clue:", error);
+    res.status(500).json({ clue: "Анимэ Сэнсэй түр бясалгал хийж байна. Дараа дахин холбогдоорой! 🧘‍♂️" });
+  }
+});
+
 // Setup Vite Development Middleware or Static Assets serving in Production
 async function startServer() {
   if (process.env.NODE_ENV !== "production") {

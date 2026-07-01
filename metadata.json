@@ -1,6 +1,6 @@
 {
-  "name": "Portfolio Website",
-  "description": "A high-end, responsive developer portfolio featuring K-pop & tech 'Idol Coach' mentoring and an interactive 'Me-AI' personal assistant chat clone powered by the Gemini 3.5 Flash API.",
+  "name": "Anime Quiz & Portfolio Website",
+  "description": "An interactive, highly polished Anime Emoji & Picture Quiz Game paired with an elegant developer portfolio, Gemini-powered Idol Coach chats, and a Me-AI assistant helper.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

@@ -3,12 +3,13 @@ import { motion, AnimatePresence } from "motion/react";
 import PortfolioView from "./components/PortfolioView";
 import IdolCoachChat from "./components/IdolCoachChat";
 import MeAiChatPopup from "./components/MeAiChatPopup";
-import { Sparkles, Code2, MessageSquare, Terminal } from "lucide-react";
+import AnimeQuizGame from "./components/AnimeQuizGame";
+import { Sparkles, Code2, MessageSquare, Terminal, Gamepad2 } from "lucide-react";
 
-type Tab = "portfolio" | "idol";
+type Tab = "quiz" | "portfolio" | "idol";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<Tab>("portfolio");
+  const [activeTab, setActiveTab] = useState<Tab>("quiz");
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col relative overflow-hidden font-sansSelection">
@@ -34,8 +35,28 @@ export default function App() {
           {/* Tab Navigation */}
           <nav className="flex items-center gap-1 sm:gap-2">
             <button
+              onClick={() => setActiveTab("quiz")}
+              className={`relative px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                activeTab === "quiz"
+                  ? "text-white"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              {activeTab === "quiz" && (
+                <motion.div
+                  layoutId="active-tab"
+                  className="absolute inset-0 bg-slate-900 border border-slate-800 rounded-xl"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10 flex items-center gap-1">
+                🎮 Анимэ Асуулт
+              </span>
+            </button>
+
+            <button
               onClick={() => setActiveTab("portfolio")}
-              className={`relative px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+              className={`relative px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
                 activeTab === "portfolio"
                   ? "text-white"
                   : "text-slate-400 hover:text-white"
@@ -53,7 +74,7 @@ export default function App() {
 
             <button
               onClick={() => setActiveTab("idol")}
-              className={`relative px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+              className={`relative px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
                 activeTab === "idol"
                   ? "text-white"
                   : "text-slate-400 hover:text-white"
@@ -68,7 +89,6 @@ export default function App() {
               )}
               <span className="relative z-10 flex items-center gap-1.5">
                 🤖 My Idol
-                <span className="w-1.5 h-1.5 rounded-full bg-pink-500"></span>
               </span>
             </button>
           </nav>
@@ -79,7 +99,17 @@ export default function App() {
       <main className="flex-1 px-4 py-8 relative z-10">
         <div className="max-w-5xl mx-auto">
           <AnimatePresence mode="wait">
-            {activeTab === "portfolio" ? (
+            {activeTab === "quiz" ? (
+              <motion.div
+                key="quiz"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+              >
+                <AnimeQuizGame />
+              </motion.div>
+            ) : activeTab === "portfolio" ? (
               <motion.div
                 key="portfolio"
                 initial={{ opacity: 0, x: -15 }}
