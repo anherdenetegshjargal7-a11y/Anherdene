@@ -3,7 +3,7 @@ export interface AnimeQuestion {
   title: string; // The correct anime name
   mongolianTitle?: string; // Mongolian translation or popular name
   emojiClue: string; // E.g. "🍊 🏴‍☠️ 🍖 ⚓"
-  pictureUrl: string; // Aesthetic Unsplash picture representing the theme
+  pictureUrl?: string; // Aesthetic Unsplash picture representing the theme
   options: string[]; // 4 multiple choice options
   difficulty: "Easy" | "Medium" | "Hard";
   hints: {
@@ -22,4 +22,4 @@ export interface PlayerStats {
   timeLeft: number;
 }
 
-export type GameMode = "emoji" | "picture";
+export type GameMode = "emoji" | "picture" | "character";

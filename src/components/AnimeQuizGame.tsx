@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { AnimeQuestion, GameMode, PlayerStats } from "../types/game";
 import { ANIME_QUESTIONS } from "../data/animeQuestions";
+import CHARACTER_QUESTIONS from "../data/data.json";
 import { sounds } from "../utils/sound";
 import { 
   Sparkles, 
@@ -61,9 +62,10 @@ export default function AnimeQuizGame() {
 
   // Initialize and shuffle questions
   const startGame = (mode: GameMode) => {
-    // Shuffle ANIME_QUESTIONS
-    const shuffled = [...ANIME_QUESTIONS].sort(() => Math.random() - 0.5);
-    setQuestions(shuffled);
+    // Shuffle appropriate questions
+    const pool = mode === "character" ? CHARACTER_QUESTIONS : ANIME_QUESTIONS;
+    const shuffled = [...pool].sort(() => Math.random() - 0.5);
+    setQuestions(shuffled as AnimeQuestion[]);
     setCurrentIdx(0);
     setGameMode(mode);
     setSelectedOption(null);
@@ -213,6 +215,22 @@ export default function AnimeQuizGame() {
     }));
   };
 
+  // Spend Hint: Reveal Text Clue
+  const handleRevealTextClue = () => {
+    if (showTextClue) {
+      setShowTextClue(false);
+      return;
+    }
+    if (stats.hintsRemaining <= 0 || isAnswered) return;
+
+    sounds.playHint();
+    setShowTextClue(true);
+    setStats(prev => ({
+      ...prev,
+      hintsRemaining: prev.hintsRemaining - 1
+    }));
+  };
+
   // Ask AI Clue (Gemini powered)
   const handleAskAiSensei = async () => {
     if (stats.hintsRemaining <= 0 || isAnswered || isAiLoading) return;
@@ -233,6 +251,7 @@ export default function AnimeQuizGame() {
           title: currentQuestion.title,
           genre: currentQuestion.hints.genre,
           difficulty: currentQuestion.difficulty,
+          isCharacter: gameMode === "character",
         }),
       });
 
@@ -326,8 +345,9 @@ export default function AnimeQuizGame() {
             </div>
 
             {/* Mode Selectors */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-3xl">
               <button
+                id="btn-emoji-mode"
                 onClick={() => startGame("emoji")}
                 className="group relative p-5 bg-gradient-to-b from-purple-900/40 to-slate-900/80 rounded-2xl border border-purple-500/30 hover:border-purple-400 text-left transition-all hover:shadow-lg hover:shadow-purple-500/5 cursor-pointer"
               >
@@ -335,11 +355,12 @@ export default function AnimeQuizGame() {
                   <span className="text-3xl">🧩</span>
                   <ChevronRight className="w-5 h-5 text-purple-400 group-hover:translate-x-1 transition-transform" />
                 </div>
-                <h3 className="font-bold text-white text-base">Emoji Guessing Mode</h3>
+                <h3 className="font-bold text-white text-base">Emoji Guess Mode</h3>
                 <p className="text-xs text-slate-400 mt-1">Орчин үеийн эможи багцаар анимэг таах</p>
               </button>
 
               <button
+                id="btn-picture-mode"
                 onClick={() => startGame("picture")}
                 className="group relative p-5 bg-gradient-to-b from-pink-900/40 to-slate-900/80 rounded-2xl border border-pink-500/30 hover:border-pink-400 text-left transition-all hover:shadow-lg hover:shadow-pink-500/5 cursor-pointer"
               >
@@ -347,8 +368,21 @@ export default function AnimeQuizGame() {
                   <span className="text-3xl">📷</span>
                   <ChevronRight className="w-5 h-5 text-pink-400 group-hover:translate-x-1 transition-transform" />
                 </div>
-                <h3 className="font-bold text-white text-base">Picture Guessing Mode</h3>
+                <h3 className="font-bold text-white text-base">Picture Guess Mode</h3>
                 <p className="text-xs text-slate-400 mt-1">Анимэ дүрслэл, алдартай зургуудаар таах</p>
+              </button>
+
+              <button
+                id="btn-character-mode"
+                onClick={() => startGame("character")}
+                className="group relative p-5 bg-gradient-to-b from-amber-900/40 to-slate-900/80 rounded-2xl border border-amber-500/30 hover:border-amber-400 text-left transition-all hover:shadow-lg hover:shadow-amber-500/5 cursor-pointer"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-3xl">⚔️</span>
+                  <ChevronRight className="w-5 h-5 text-amber-400 group-hover:translate-x-1 transition-transform" />
+                </div>
+                <h3 className="font-bold text-white text-base">Hero Guess Mode</h3>
+                <p className="text-xs text-slate-400 mt-1">Luffy, Naruto, Goku гэх мэт анимэ баатруудыг таах</p>
               </button>
             </div>
 
@@ -476,22 +510,31 @@ export default function AnimeQuizGame() {
                       <p className="text-xs text-slate-500">Дээрх эможинуудаар аялал болон үйл явдлыг илэрхийлсэн анимэг таана уу.</p>
                     </motion.div>
                   ) : (
-                    <div className="w-full h-full min-h-[160px] relative rounded-xl overflow-hidden border border-slate-800">
-                      <img
-                        src={currentQuestion.pictureUrl}
-                        alt="Anime clue illustration"
-                        className={`w-full h-full object-cover transition-all duration-700 ${
-                          isAnswered ? "blur-0" : "blur-sm"
-                        }`}
-                        referrerPolicy="no-referrer"
-                      />
-                      {!isAnswered && (
-                        <div className="absolute inset-0 bg-slate-950/40 flex flex-col items-center justify-center text-center p-4">
-                          <Eye className="w-8 h-8 text-pink-400/80 mb-2 animate-pulse" />
-                          <p className="text-xs text-slate-100 font-semibold drop-shadow-md">Зураг бүдгэрүүлсэн байна</p>
-                          <p className="text-[10px] text-slate-200 mt-1 drop-shadow-md">Тааж амжвал зураг тодорно!</p>
-                        </div>
-                      )}
+                    <div className="w-full h-full min-h-[160px] relative rounded-xl overflow-hidden border border-slate-800 flex flex-col justify-between">
+                      <div className="w-full h-full relative flex-1 min-h-[160px]">
+                        <img
+                          src={currentQuestion.pictureUrl}
+                          alt="Anime clue illustration"
+                          className={`w-full h-full object-cover transition-all duration-700 ${
+                            isAnswered ? "blur-0" : "blur-sm"
+                          }`}
+                          referrerPolicy="no-referrer"
+                        />
+                        {!isAnswered && (
+                          <div className="absolute inset-0 bg-slate-950/40 flex flex-col items-center justify-center text-center p-4">
+                            <Eye className="w-8 h-8 text-pink-400/80 mb-2 animate-pulse" />
+                            <p className="text-xs text-slate-100 font-semibold drop-shadow-md">Зураг бүдгэрүүлсэн байна</p>
+                            <p className="text-[10px] text-slate-200 mt-1 drop-shadow-md">
+                              {gameMode === "character" ? "Баатрыг зөв таавал зураг тодорно!" : "Анимэг зөв таавал зураг тодорно!"}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                      <div className="bg-slate-950/90 py-2 px-3 border-t border-slate-850 text-center">
+                        <p className="text-xs font-semibold text-slate-300">
+                          {gameMode === "character" ? "Энэхүү алдартай анимэ дүрийн нэр хэн бэ?" : "Энэхүү дүрслэлээр анимэг таана уу."}
+                        </p>
+                      </div>
                     </div>
                   )}
 
@@ -518,20 +561,22 @@ export default function AnimeQuizGame() {
                 {/* Sub Clue Action buttons */}
                 <div className="flex gap-2">
                   <button
-                    onClick={() => setShowTextClue(!showTextClue)}
-                    className="flex-1 py-2.5 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl text-xs text-slate-300 flex items-center justify-center gap-1.5 transition-colors"
+                    onClick={handleRevealTextClue}
+                    disabled={(!showTextClue && stats.hintsRemaining <= 0) || isAnswered}
+                    className="flex-1 py-2.5 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 disabled:opacity-40 rounded-xl text-xs text-slate-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                   >
                     <HelpCircle className="w-3.5 h-3.5 text-indigo-400" />
-                    {showTextClue ? "Зөвлөгөө нуух" : "Текст зөвлөгөө"}
+                    {showTextClue ? "Зөвлөгөө нуух" : "Текст зөвлөгөө (Кост: 1)"}
                   </button>
 
                   <button
+                    id="btn-get-hint"
                     onClick={handleAskAiSensei}
                     disabled={stats.hintsRemaining <= 0 || isAnswered || isAiLoading}
                     className="flex-1 py-2.5 px-3 bg-gradient-to-r from-purple-900/40 to-pink-900/40 hover:from-purple-900/60 hover:to-pink-900/60 border border-purple-500/20 disabled:opacity-40 rounded-xl text-xs text-white flex items-center justify-center gap-1.5 transition-all"
                   >
-                    <Sparkles className="w-3.5 h-3.5 text-pink-400" />
-                    <span>Ask AI Sensei</span>
+                    <Sparkles className="w-3.5 h-3.5 text-pink-400 animate-pulse" />
+                    <span>Get Hint</span>
                   </button>
                 </div>
               </div>

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "luffy",
+    "title": "Monkey D. Luffy",
+    "mongolianTitle": "Монки Д. Луффи",
+    "emojiClue": "👒 🍖 🏴‍☠️ ⚓ ⛵",
+    "pictureUrl": "/src/assets/images/one_piece_clue_1783047239174.jpg",
+    "options": ["Naruto Uzumaki", "Monkey D. Luffy", "Roronoa Zoro", "Portgas D. Ace"],
+    "difficulty": "Easy",
+    "hints": {
+      "firstLetter": "M",
+      "lengthInfo": "Гурван хэсгээс бүрдэх нэр, эхний үсэг M",
+      "textClue": "Резенэн биетэй, малгайтай далайн дээрэмчин бөгөөд ирээдүйн Далайн дээрэмчдийн хаан.",
+      "genre": "One Piece"
+    }
+  },
+  {
+    "id": "naruto",
+    "title": "Naruto Uzumaki",
+    "mongolianTitle": "Наруто Узумаки",
+    "emojiClue": "🦊 🍜 🌀 🗡️ 🐸",
+    "pictureUrl": "/src/assets/images/naruto_clue_1783047374945.jpg",
+    "options": ["Sasuke Uchiha", "Naruto Uzumaki", "Kakashi Hatake", "Boruto Uzumaki"],
+    "difficulty": "Easy",
+    "hints": {
+      "firstLetter": "N",
+      "lengthInfo": "Хоёр хэсгээс бүрдэх нэр, эхний үсэг N",
+      "textClue": "Есөн сүүлт үнэгний хүчийг агуулсан, Хокагэ болох туйлын зорилготой нинжа.",
+      "genre": "Naruto"
+    }
+  },
+  {
+    "id": "tanjiro",
+    "title": "Tanjiro Kamado",
+    "mongolianTitle": "Танжиро Камадо",
+    "emojiClue": "⚔️ 👺 🌊 🎋 🔥",
+    "pictureUrl": "/src/assets/images/tanjiro_clue_1783047399809.jpg",
+    "options": ["Zenitsu Agatsuma", "Inosuke Hashibira", "Tanjiro Kamado", "Giyu Tomioka"],
+    "difficulty": "Easy",
+    "hints": {
+      "firstLetter": "T",
+      "lengthInfo": "Хоёр хэсгээс бүрдэх нэр, эхний үсэг T",
+      "textClue": "Духандаа сорвитой, дүү Нэзүкогоо аврахын тулд чөтгөрийн ангууч болсон хүү.",
+      "genre": "Demon Slayer"
+    }
+  },
+  {
+    "id": "goku",
+    "title": "Son Goku",
+    "mongolianTitle": "Сон Гокү",
+    "emojiClue": "🐵 🐉 🍊 🥋 💥",
+    "pictureUrl": "/src/assets/images/goku_clue_1783047388093.jpg",
+    "options": ["Vegeta", "Son Goku", "Gohan", "Frieza"],
+    "difficulty": "Easy",
+    "hints": {
+      "firstLetter": "S",
+      "lengthInfo": "Хоёр хэсгээс бүрдэх нэр, эхний үсэг S",
+      "textClue": "Дэлхийг хамгаалдаг хамгийн хүчирхэг Саяан (Saiyan) дайчин, Камехамеха довтолгооныг эзэмшигч.",
+      "genre": "Dragon Ball"
+    }
+  },
+  {
+    "id": "gojo",
+    "title": "Gojo Satoru",
+    "mongolianTitle": "Гожо Сатору",
+    "emojiClue": "🕶️ 🤞 🔵 🔴 🟣",
+    "pictureUrl": "/src/assets/images/gojo_clue_1783047409831.jpg",
+    "options": ["Megumi Fushiguro", "Yuji Itadori", "Gojo Satoru", "Suguru Geto"],
+    "difficulty": "Medium",
+    "hints": {
+      "firstLetter": "G",
+      "lengthInfo": "Хоёр хэсгээс бүрдэх нэр, эхний үсэг G",
+      "textClue": "Нүдээ боосон, 'Хязгааргүй хоосон' (Unlimited Void) домэйн эзэмшигч хамгийн хүчирхэг хараалын мастер.",
+      "genre": "Jujutsu Kaisen"
+    }
+  },
+  {
+    "id": "saitama",
+    "title": "Saitama",
+    "mongolianTitle": "Сайтама",
+    "emojiClue": "🥚 👊 🟥 🦲 🏪",
+    "pictureUrl": "/src/assets/images/saitama_clue_1783047434753.jpg",
+    "options": ["Genos", "Saitama", "Garou", "Mumen Rider"],
+    "difficulty": "Easy",
+    "hints": {
+      "firstLetter": "S",
+      "lengthInfo": "Нэг үгтэй нэр, эхний үсэг S",
+      "textClue": "Ямар ч дайсныг ганцхан цохилтоор ялдаг, халзан толгойтой баатар.",
+      "genre": "One Punch Man"
+    }
+  },
+  {
+    "id": "eren",
+    "title": "Eren Yeager",
+    "mongolianTitle": "Эрэн Еэгэр",
+    "emojiClue": "🧱 🧗‍♂️ 🗡️ 🩸 🐎 👑",
+    "pictureUrl": "/src/assets/images/eren_clue_1783047447069.jpg",
+    "options": ["Eren Yeager", "Armin Arlert", "Mikasa Ackerman", "Levi Ackerman"],
+    "difficulty": "Medium",
+    "hints": {
+      "firstLetter": "E",
+      "lengthInfo": "Хоёр хэсгээс бүрдэх нэр, эхний үсэг E",
+      "textClue": "Титануудын эсрэг өшөө авахаар тэмцэж, өөрөө дайралтын титан болж хувирдаг дүр.",
+      "genre": "Attack on Titan"
+    }
+  },
+  {
+    "id": "zoro",
+    "title": "Roronoa Zoro",
+    "mongolianTitle": "Ророноа Зоро",
+    "emojiClue": "⚔️ 💚 🧭 🏴‍☠️ 💤",
+    "pictureUrl": "/src/assets/images/zoro_clue_1783047459956.jpg",
+    "options": ["Monkey D. Luffy", "Roronoa Zoro", "Sanji", "Dracule Mihawk"],
+    "difficulty": "Easy",
+    "hints": {
+      "firstLetter": "R",
+      "lengthInfo": "Хоёр хэсгээс бүрдэх нэр, эхний үсэг R",
+      "textClue": "Гурван сэлэм зэрэг ашиглан тулалддаг, зүг чиглэлээ олохдоо туйлын муу далайн дээрэмчин.",
+      "genre": "One Piece"
+    }
+  },
+  {
+    "id": "nezuko",
+    "title": "Nezuko Kamado",
+    "mongolianTitle": "Нэзүко Камадо",
+    "emojiClue": "🎋 🎀 📦 👹 🌸",
+    "pictureUrl": "/src/assets/images/nezuko_clue_1783047422823.jpg",
+    "options": ["Tanjiro Kamado", "Nezuko Kamado", "Kanao Tsuyuri", "Shinobu Kocho"],
+    "difficulty": "Easy",
+    "hints": {
+      "firstLetter": "N",
+      "lengthInfo": "Хоёр хэсгээс бүрдэх нэр, эхний үсэг N",
+      "textClue": "Амандаа хулс зуусан, өдрийн цагаар модон хайрцаг дотор явдаг чөтгөр болон хувирсан охин.",
+      "genre": "Demon Slayer"
+    }
+  },
+  {
+    "id": "levi",
+    "title": "Levi Ackerman",
+    "mongolianTitle": "Леви Аккерман",
+    "emojiClue": "🧹 ☕ ⚔️ 🧥 🍃",
+    "pictureUrl": "/src/assets/images/levi_clue_1783047475919.jpg",
+    "options": ["Eren Yeager", "Levi Ackerman", "Erwin Smith", "Mikasa Ackerman"],
+    "difficulty": "Medium",
+    "hints": {
+      "firstLetter": "L",
+      "lengthInfo": "Хоёр хэсгээс бүрдэх нэр, эхний үсэг L",
+      "textClue": "Хүн төрөлхтний хамгийн хүчирхэг цэрэг, маш цэвэрч бөгөөд цай уух дуртай ахмад.",
+      "genre": "Attack on Titan"
+    }
+  }
+]
