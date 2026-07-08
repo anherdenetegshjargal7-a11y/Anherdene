@@ -4,9 +4,10 @@ import PortfolioView from "./components/PortfolioView";
 import IdolCoachChat from "./components/IdolCoachChat";
 import MeAiChatPopup from "./components/MeAiChatPopup";
 import AnimeQuizGame from "./components/AnimeQuizGame";
+import MyWebsiteView from "./components/MyWebsiteView";
 import { Sparkles, Code2, MessageSquare, Terminal, Gamepad2 } from "lucide-react";
 
-type Tab = "quiz" | "portfolio" | "idol";
+type Tab = "quiz" | "portfolio" | "idol" | "website";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>("quiz");
@@ -91,6 +92,26 @@ export default function App() {
                 🤖 My Idol
               </span>
             </button>
+
+            <button
+              onClick={() => setActiveTab("website")}
+              className={`relative px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                activeTab === "website"
+                  ? "text-white"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              {activeTab === "website" && (
+                <motion.div
+                  layoutId="active-tab"
+                  className="absolute inset-0 bg-gradient-to-r from-indigo-600/10 to-pink-600/10 border border-indigo-500/30 rounded-xl"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10 flex items-center gap-1.5">
+                🌐 Вэбсайт
+              </span>
+            </button>
           </nav>
         </div>
       </header>
@@ -119,7 +140,7 @@ export default function App() {
               >
                 <PortfolioView onNavigateToIdol={() => setActiveTab("idol")} />
               </motion.div>
-            ) : (
+            ) : activeTab === "idol" ? (
               <motion.div
                 key="idol"
                 initial={{ opacity: 0, x: 15 }}
@@ -128,6 +149,16 @@ export default function App() {
                 transition={{ duration: 0.3 }}
               >
                 <IdolCoachChat />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="website"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+              >
+                <MyWebsiteView />
               </motion.div>
             )}
           </AnimatePresence>
