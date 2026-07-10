@@ -196,23 +196,7 @@ export default function PortfolioView({ onNavigateToIdol }: { onNavigateToIdol: 
         </div>
       </section>
 
-      {/* Stats Counter Section */}
-      <section className="max-w-5xl mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 p-8 bg-slate-900/40 rounded-2xl border border-slate-800/80 backdrop-blur-sm">
-          <div className="text-center space-y-1">
-            <h3 className="text-3xl font-bold text-white font-display">4+ Жил</h3>
-            <p className="text-sm text-slate-400">Мэргэжлийн ажлын туршлага</p>
-          </div>
-          <div className="text-center space-y-1 sm:border-x border-slate-800">
-            <h3 className="text-3xl font-bold text-white font-display">15+ Төсөл</h3>
-            <p className="text-sm text-slate-400">Амжилттай бүтээсэн вэб ба систем</p>
-          </div>
-          <div className="text-center space-y-1">
-            <h3 className="text-3xl font-bold text-white font-display">100%</h3>
-            <p className="text-sm text-slate-400">Сэтгэл ханамж, чанарын баталгаа</p>
-          </div>
-        </div>
-      </section>
+
 
       {/* Projects Section */}
       <section id="projects" className="max-w-5xl mx-auto px-4 scroll-mt-24">

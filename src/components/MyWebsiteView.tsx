@@ -17,10 +17,10 @@ const WEBSITES: Website[] = [
     description: "Миний анхны портфолио вэбсайт болон үндсэн хуудас.",
   },
   {
-    id: "portfolio-7zjg",
-    name: "Шинэ вэбсайт (anherdene-7zjg)",
-    url: "https://anherdene-7zjg.vercel.app/",
-    description: "Саяхан шинэчилсэн нэмэлт вэбсайт болон төсөл.",
+    id: "portfolio-6sf5",
+    name: "Анимэ Асуулт Хариултын Тоглоом (anherdene-6sf5)",
+    url: "https://anherdene-6sf5.vercel.app/",
+    description: "Хэрэглэгчийн анимэ мэдлэгийг эможи, зураг болон уран зөгнөлт зөвлөмжүүдээр сорих сонирхолтой, танин мэдэхүйн тоглоом.",
   }
 ];
 

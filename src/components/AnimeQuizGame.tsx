@@ -386,6 +386,83 @@ export default function AnimeQuizGame() {
               </button>
             </div>
 
+            {/* Premium Mongolian Description & Generated Art Card */}
+            <div className="w-full max-w-3xl bg-slate-900/45 rounded-2xl border border-slate-800/80 p-5 sm:p-6 text-left space-y-5 backdrop-blur-md relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl pointer-events-none" />
+              
+              {/* Graphic Banner */}
+              <div className="w-full h-44 sm:h-52 relative rounded-xl overflow-hidden border border-slate-800 shadow-inner group">
+                <img 
+                  src="/src/assets/images/anime_quiz_banner_1783481414880.jpg" 
+                  alt="Anime Quiz Banner Artwork" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex items-end p-4 sm:p-5">
+                  <div>
+                    <span className="px-2 py-0.5 bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[10px] font-bold font-mono rounded-md uppercase tracking-wider">
+                      Official Game Visual
+                    </span>
+                    <h4 className="text-white text-lg font-black mt-1.5 drop-shadow-md">
+                      Anime IQ Quiz — Хязгааргүй Аялал
+                    </h4>
+                  </div>
+                </div>
+              </div>
+
+              {/* Description Content */}
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wide flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-purple-400 animate-pulse" />
+                    Сорилтын тухай тодорхойлолт
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Энэхүү сорилт нь анимэ сонирхогчид болон отаку нарт зориулсан ухаалаг танин мэдэхүйн тоглоом юм. Таны харах, сэтгэх, тааварлах чадварыг олон төрлийн даалгавраар шалгах ба Gemini AI системээр дэмжигдсэн шийдлүүдийг агуулдаг.
+                  </p>
+                </div>
+
+                {/* Features Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
+                  <div className="p-3 bg-slate-950/50 rounded-xl border border-slate-850/60 text-xs space-y-1">
+                    <p className="font-bold text-indigo-400 flex items-center gap-1.5">
+                      🔮 Gemini AI Сэнсэй
+                    </p>
+                    <p className="text-slate-400 leading-relaxed">
+                      Хүндрэлтэй үед асуултад зориулсан уран зөгнөлт, далд зөвлөмжийг Gemini 3.5 Flash ашиглан Сэнсэйгээс шууд авна.
+                    </p>
+                  </div>
+
+                  <div className="p-3 bg-slate-950/50 rounded-xl border border-slate-850/60 text-xs space-y-1">
+                    <p className="font-bold text-pink-400 flex items-center gap-1.5">
+                      🔥 Дараалсан зөв оноо (Streak)
+                    </p>
+                    <p className="text-slate-400 leading-relaxed">
+                      Зөв хариулах тусам стрик идэвхжиж, дараагийн асуултуудад илүү өндөр бонус оноо цуглуулах боломж нээгдэнэ.
+                    </p>
+                  </div>
+
+                  <div className="p-3 bg-slate-950/50 rounded-xl border border-slate-850/60 text-xs space-y-1">
+                    <p className="font-bold text-amber-400 flex items-center gap-1.5">
+                      🧩 Олон талт тоглолтын загвар
+                    </p>
+                    <p className="text-slate-400 leading-relaxed">
+                      Эможи тайлал, бүдгэрүүлсэн зураг тодруулагч болон баатрын нэрийг таах зэрэг 3 өөр горимоор тархиа цэнэглэнэ.
+                    </p>
+                  </div>
+
+                  <div className="p-3 bg-slate-950/50 rounded-xl border border-slate-850/60 text-xs space-y-1">
+                    <p className="font-bold text-purple-400 flex items-center gap-1.5">
+                      ⚡ Тоглоомын хялбар тусламжууд
+                    </p>
+                    <p className="text-slate-400 leading-relaxed">
+                      Текст зөвлөмж илрүүлэх, эргэлзээтэй үед 50/50 хасах зэрэг боломжуудаар оноогоо өндөрт хадгалах боломжтой.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <p className="text-[10px] text-slate-500 font-mono">
               Нэг асуултад 30 секунд. 3 амь/тусламжтай эхэлнэ.
             </p>
